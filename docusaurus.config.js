@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'P.E.M TECH',
-  tagline: 'Documentação',
+
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -66,6 +66,16 @@ const config = {
     ],
   ],
 
+  plugins:[
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed:true,
+        indexBlog: false,
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -79,17 +89,21 @@ const config = {
         },
         items: [
           {
+            type:'search',
+            position:'left',
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Documentação',
+            label: 'Base de Conhecimento',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // {
+          //   href: 'https://github.com/facebook/docusaurus',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
