@@ -3,8 +3,25 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 const FeatureList = [
-
-  
+  {
+    
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+      Apenas uma Documentação Simples sobre algumas ferramentas.
+      </>
+    ),
+  },
+  {
+   
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        Site com o simples foco de juntar conhecimento em um só lugar pra facilitar
+        a busca no dia a dia. .
+      </>
+    ),
+  },
   
 ];
 

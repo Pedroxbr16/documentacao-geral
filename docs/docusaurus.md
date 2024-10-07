@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Como usar o Docusaurus
+# Como usar o Docusaurus?
 
 primeiro crie a estrutura do projeto
 
@@ -10,7 +10,7 @@ primeiro crie a estrutura do projeto
 npx create-docusaurus@latest my-website classic
 ```
 
-# Como adicionar uma searchbar em seu projeto docusaurus
+# Como adicionar uma searchbar em seu projeto docusaurus?
 
 o docusaurus tem o algolia, porém esse é mais simples de instalar e configurar
 
