@@ -76,6 +76,13 @@ const config = {
     ],
   ],
 
+  scripts:[
+    {
+      src:'custom.js',
+      async:true,
+    }
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -149,7 +156,7 @@ const config = {
         //     ],
         //   },
         // ],
-        copyright: `Copyright © ${new Date().getFullYear()} P.E.M TECH.`,
+        copyright: `Todos os Direitos Reservados © ${new Date().getFullYear()} P.E.M TECH.`,
       },
       prism: {
         theme: prismThemes.github,
