@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Instalção do pyenv no linux
+# Instalação do pyenv no linux
 
 primeiro instale as bibliotecas nescessárias
 
@@ -26,7 +26,7 @@ rode:
 echo $SHELL
 ```
 
-Exemplo de saída foi: /bin/bash
+Exemplo de saída foi: /bin/bash. <br />
 Com um editor de texto de sua preferência, abra o arquivo .bashrc e cole os comandos abaixo:
 eu costumo usar o nano
 ```bash
@@ -35,7 +35,7 @@ nano ~/.bashrc
 
 cole isso na ultima linha.
 
-```
+```bash
 export PYENV_ROOT=”$HOME/.pyenv”
 
 export PATH=”$PYENV_ROOT/bin:$PATH”

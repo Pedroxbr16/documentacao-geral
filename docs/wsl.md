@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Instalação Ubuntu(WSL)
 
+:::info
+Se preferir pode apenas baixar o Wsl pela Microsoft store.
+:::
+-------------------------------------
 primeiro de tudo ative o hyper v
 
 para chegar até eles siga esse passo a passo

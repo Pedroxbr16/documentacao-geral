@@ -14,7 +14,7 @@ npx create-docusaurus@latest my-website classic
 
 o docusaurus tem o algolia, porém esse é mais simples de instalar e configurar
 
-```
+```bash
 npm install --save @easyops-cn/docusaurus-search-local
 # ou
 yarn add @easyops-cn/docusaurus-search-local
@@ -22,7 +22,7 @@ yarn add @easyops-cn/docusaurus-search-local
 
 logo após no seu docusaurus.config.js adicione a requisição 
 
-```
+```bash
  plugins:[
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),  
