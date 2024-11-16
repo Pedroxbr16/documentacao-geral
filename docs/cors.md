@@ -2,7 +2,9 @@
 sidebar_position: 10
 ---
 
-# Configurando CORS num projeto com React e Symfony
+# Configurando CORS 
+
+## Num projeto com React e Symfony
 
 Para configurar o CORS em um projeto com React no front-end e Symfony no back-end, você precisa permitir que o Symfony aceite requisições de origens diferentes (Cross-Origin Resource Sharing - CORS). Aqui estão os passos para configurar:
 
@@ -66,3 +68,46 @@ axios.post('http://localhost:8000/api/endpoint', data, {
     - DevTools: Verifique as requisições no console do navegador (DevTools) para garantir que o cabeçalho `Access-Control-Allow-Origin` esteja presente nas respostas da API.
     - Teste no ambiente local: Execute o front-end (React) e o back-end (Symfony) e veja se o problema de CORS foi resolvido.
     - Com essas configurações, o Symfony permitirá requisições do seu front-end React.
+
+
+## Configurar no Node
+
+### 1. dentro da pasta raiz que está configurando o node rode o comando:
+
+```bash
+npm install cors
+```
+
+### 2. Importe ele no seu servidor
+
+exemplo:
+```bash
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+// Permitir todas as origens
+app.use(cors());
+
+app.get('/api', (req, res) => {
+    res.json({ message: 'CORS habilitado!' });
+});
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
+});
+```
+
+### 3. configurações especificas
+
+```bash
+const corsOptions = {
+    origin: 'http://example.com', // Domínio permitido
+    methods: ['GET', 'POST'],    // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+};
+
+app.use(cors(corsOptions));
+```
+

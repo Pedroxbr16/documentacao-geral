@@ -4,6 +4,36 @@ sidebar_position: 8
 
 # Git
 
+## instalando o git no wsl
+
+primeiro  certifique-se que o sistema esta atualizado
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+```bash
+sudo apt install git -y
+```
+após isso confirme que foi instalado corretamenta
+
+```bash
+git --version
+```
+
+
+## configurando o git
+
+pra configurar seu nome de usuario
+```bash
+git config --global user.name "Seu Nome"
+```
+
+para configurar seu email
+```bash
+git config --global user.email "seuemail@exemplo.com"
+```
+
 ## Comandos de Inicialização
 
 ```bash

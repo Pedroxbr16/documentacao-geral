@@ -3,13 +3,18 @@ sidebar_position: 6
 ---
 
 
-# Instalar o MySQL e Configurar o Banco de Dados via shell
+# Instalar o MySQL e Configurar o Banco de Dados via shell do xampp
 
 Se ainda não tiver o MySQL instalado, siga os passos abaixo:
 
-## Passo 1: Baixe e instale o MySQL.
+## Passo 1: Baixe e instale o MySQL e entre no shell dele.
+rode o comando pra acessar o sql
 
-## Passo 2: Após a instalação, abra o MySQL Workbench ou use o terminal para criar um banco de dados:
+```bash
+mysql -u root -p
+```
+**provavel que ele peça senha, normalmente o padrão é não ter então basta dar enter** 
+## Passo 2: Após a instalação, abra o terminal para criar um banco de dados:
 
 ```bash
 CREATE DATABASE nome_do_banco;
