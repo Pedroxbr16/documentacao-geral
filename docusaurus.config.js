@@ -78,7 +78,7 @@ const config = {
 
   scripts:[
     {
-      src:'custom.js',
+      src: '/js/custom.js',
       async:true,
     }
   ],
