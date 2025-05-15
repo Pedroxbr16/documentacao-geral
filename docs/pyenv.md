@@ -17,6 +17,13 @@ agore instale o pyenv
 ```bash
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 ```
+Caso tenha problemas na instalação por conte de firewall e erros como SSL_connect use:
+
+```bash
+wget https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer -O pyenv-installer
+bash pyenv-installer
+```
+
 
 agora configure a variavel de ambiente 
 
@@ -36,15 +43,13 @@ nano ~/.bashrc
 cole isso na ultima linha.
 
 ```bash
-export PYENV_ROOT=”$HOME/.pyenv”
-
-export PATH=”$PYENV_ROOT/bin:$PATH”
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
-
-eval “$(pyenv init –path)”
-
+  eval "$(pyenv init --path)"
 fi
+
 ```
 
 ctrl + o e enter pra salvar e ctrl + x pra sair
