@@ -2,209 +2,255 @@
 sidebar_position: 1
 ---
 
-# Instalação Ubuntu(WSL)
+# Instalação do Ubuntu (WSL)
 
 :::info
-Se preferir pode apenas baixar o Wsl pela Microsoft store.
+💡 Se preferir, você pode simplesmente baixar o WSL pela Microsoft Store.
 :::
--------------------------------------
-primeiro de tudo ative o hyper v
 
-para chegar até eles siga esse passo a passo
+## 1. Ativando o Hyper-V
 
-- Navegue até o Painel de Controle.
+Antes de instalar o WSL, é necessário ativar o **Hyper-V**:
 
-- Selecione Programas e então Programas e Recursos.
+1. Acesse o **Painel de Controle**.
+2. Clique em **Programas** > **Programas e Recursos**.
+3. Clique em **Ativar ou desativar recursos do Windows**.
+4. Marque a opção **Hyper-V**.
+5. Clique em **OK** e aguarde a conclusão.
 
-- Selecione Ativar ou desativar recursos do Windows.
+---
 
-- Selecione Hyper-V e, depois selecione OK.
+## 2. Habilitar o WSL e a Plataforma de Máquina Virtual
 
-abra o powershell como administrador e execute os sequintes comandos
+Abra o **PowerShell como administrador** e execute os comandos abaixo:
 
 ```bash
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
-
-O comando acima habilita a feature do WSL.
+> Habilita o subsistema Linux no Windows.
 
 ```bash
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
+> Habilita a plataforma de máquina virtual necessária para o WSL 2.
 
-O comando acima habilita a feature da plataforma de máquina virtual no sistema operacional.
+🔁 **Reinicie o computador** após esses comandos.
 
-após realizar esses comandos reinicie sua máquina
+---
 
-depois abra o powershell novamento como administrador
+## 3. Definindo o WSL 2 como padrão
+
+Após reiniciar, abra o PowerShell como administrador novamente:
 
 ```bash
 wsl --set-default-version 2
 ```
 
-Provavel que após executar esse comando ele pedirá pra baixar a atualização do kernel
-[baixe aqui](https://learn.microsoft.com/pt-br/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+Se for solicitado a atualização do kernel, baixe e instale a partir do link oficial:
 
-logo após instale uma distro da sua preferencia na loja da microsoft(Recomendo o Ubuntu 20.04.06 LTS)
+🔗 [Baixar atualização do kernel WSL](https://learn.microsoft.com/pt-br/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 
-antes de continuar verifique se está tudo certo com o wsl
+---
+
+## 4. Instalar uma distribuição Linux
+
+Abra a **Microsoft Store**, procure por uma distribuição e instale. Recomendamos:
+
+> **Ubuntu 20.04.6 LTS**
+
+---
+
+## 5. Verificar e configurar a versão da distro
+
+Após a instalação, execute:
 
 ```bash
 wsl -l -v
 ```
 
-se a "version" estiver como 1, rode o comando
+Se a versão da sua distribuição estiver como `1`, atualize para a versão `2` com:
 
 ```bash
 wsl --set-version Ubuntu-20.04 2
 ```
+
 :::info
-o nome "Ubuntu-20.04" deve ser trocado pela dsitro escolhida
+🔁 Substitua `Ubuntu-20.04` pelo nome exato da distribuição listada no comando anterior.
 :::
 
-Agora vamos acessar o explorer do windows  de "dentro" da distribuição linux escolhida
+---
+
+## 6. Acessando os arquivos do Ubuntu via Explorer
+
+Dentro da distribuição Linux (terminal do Ubuntu):
 
 ```bash
 cd
 explorer.exe .
 ```
 
-O Explorer (gerenciador de arquivos) irá abrir direto no local onde se encontra a distribuição linux instalada anteriormente. Inserimos a pasta do Ubuntu no “Acesso Rápido” para facilitar o uso no futuro.
+O gerenciador de arquivos do Windows será aberto no diretório raiz da sua distro.
 
----------------
+---
 
-## Banco de dados no Wsl
+# Banco de Dados no WSL
 
+---
 
-##  Mysql
+## MySQL
 
-### 1. Atualize os pacotes
+### 1. Atualizar pacotes
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
-### 2. Instale o MySql Server
+
+### 2. Instalar MySQL Server
+
 ```bash
 sudo apt install mysql-server -y
 ```
-### 3. Inicie o MySql
+
+### 3. Iniciar o MySQL
+
 ```bash
 sudo service mysql start
 ```
-✅ Você pode verificar se o serviço está rodando com:
+
+✅ Verificar status:
+
 ```bash
 sudo service mysql status
 ```
-- Para acessar o mysql como root:
+
+### 4. Acessar o MySQL como root
+
 ```bash
 sudo mysql
 ```
-- Para definir outra senha:
-```bash
+
+Para definir uma nova senha:
+
+```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'sua_senha_aqui';
 FLUSH PRIVILEGES;
 EXIT;
 ```
 
-### Instalação do apache pra gerenciar pelo phpmyadmin    
+---
 
-### 1. Instale o apache
+## phpMyAdmin com Apache
+
+### 1. Instalar Apache
+
 ```bash
 sudo apt install apache2 -y
 ```
 
+### 2. Instalar PHP
 
-### 2. Instale o PHP
 ```bash
 sudo apt install php libapache2-mod-php php-mysql -y
 ```
 
+### 3. Instalar phpMyAdmin
 
-### 3. Instale o phpmyadmin
 ```bash
 sudo apt install phpmyadmin -y
 ```
-- Durante a instalação:
-    - Escolha o servidor Apache2 (use espaço para selecionar e depois Enter).
-    - Escolha Sim para configurar com dbconfig-common.
-    - Coloque uma senha para o phpMyAdmin (ou deixe em branco e ele gera)
 
-⚠️ Se você não viu essas opções, você pode reinstalar com:
+Durante a instalação:
+- Marque o **Apache2** (tecla **Espaço** para selecionar, depois **Enter**).
+- Escolha **Sim** para configurar com `dbconfig-common`.
+- Defina uma senha para o phpMyAdmin ou deixe em branco para gerar automaticamente.
+
+❗ Se não aparecerem essas opções, reinstale com:
+
 ```bash
 sudo apt purge phpmyadmin -y
 sudo apt install phpmyadmin -y
 ```
 
+### 4. Ativar configuração no Apache
 
-### 4. Ative o phpMyAdmin no Apache
-- O instalador normalmente já cria um link em /etc/apache2/conf-enabled/phpmyadmin.conf, mas se não funcionar:
+Se necessário:
+
 ```bash
 sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
 sudo a2enconf phpmyadmin
 sudo systemctl reload apache2
 ```
 
+### 5. Reiniciar Apache
 
-### 5. Reinicie o apache
 ```bash
 sudo service apache2 restart
 ```
 
-### 6. Acesse pelo navegado
-```bash
+### 6. Acessar o phpMyAdmin
+
+Abra no navegador:
+
+```
 http://localhost/phpmyadmin
 ```
 
+---
+
 ## MongoDB
 
-### 1. Instalar o Mongo
+### 1. Instalar o MongoDB
+
 ```bash
 sudo apt update
 sudo apt install -y mongodb
 ```
 
-⚠️ Em algumas distros do WSL pode estar como mongodb-server, então se der erro:
+⚠️ Em algumas distros, use:
+
 ```bash
 sudo apt install -y mongodb-server
 ```
 
+### 2. Iniciar o serviço
 
-### 2. Iniciar o Mongo
 ```bash
 sudo service mongodb start
 ```
 
+### 3. Testar acesso
 
-### 3. Teste
 ```bash
 mongo
 ```
 
+Se aparecer o prompt `>`, o Mongo está rodando.
 
-Se abrir o prompt > do Mongo, tá tudo certo.
+---
 
-### Instalar o Mongo Express
+## Mongo Express
 
-### 1. Instale Node.js e npm
+### 1. Instalar Node.js e npm
+
 ```bash
 sudo apt install -y nodejs npm
 ```
 
+### 2. Instalar o Mongo Express globalmente
 
-### 2. Instale o mongo express  
 ```bash
 sudo npm install -g mongo-express
 ```
 
-
 ### 3. Criar arquivo de configuração
-Crie um arquivo .json com configurações mínimas, exemplo:
+
 ```bash
 nano mongo-express-config.json
 ```
 
+Cole o seguinte conteúdo:
 
-E cole isso:
-```bash
+```json
 {
   "mongodb": {
     "server": "127.0.0.1",
@@ -218,18 +264,18 @@ E cole isso:
   },
   "useBasicAuth": false
 }
-
 ```
 
-### 5. Rode o mongo express
+### 4. Rodar o Mongo Express
+
 ```bash
 mongo-express -c mongo-express-config.json
 ```
 
+Acesse no navegador:
 
-Agora ele estará rodando em:
-```bash
+```
 http://localhost:8081
 ```
 
-
+---
