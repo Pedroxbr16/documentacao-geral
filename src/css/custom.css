@@ -1,24 +1,28 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Qualquer CSS aqui é global.
+ * Estamos forçando dark mode 100%.
  */
 
-/* You can override the default Infima variables here. */
+/* tema base (independente de claro/escuro) */
 :root {
-  --ifm-color-primary: #000080;
-  --ifm-color-primary-dark: #000066;
-  --ifm-color-primary-darker: #00004D;
-  --ifm-color-primary-darkest: #000033;
-  --ifm-color-primary-light: #3333CC;
-  --ifm-color-primary-lighter: #6666FF;
-  --ifm-color-primary-lightest: #9999FF;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-}
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.25);
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+  /* tipografia e bordas em dark */
+  --ifm-font-color-base: #f8fafc;
+  --ifm-color-content: #f8fafc;
+  --ifm-color-content-secondary: #cbd5e1;
+
+  --ifm-border-color: rgba(148,163,184,0.18);
+
+  /* fundo geral e superfícies */
+  --ifm-background-color: #0f1117;
+  --ifm-background-surface-color: #1a1d29;
+  --ifm-navbar-background-color: #0f1117;
+  --ifm-footer-background-color: #0f1117;
+  --ifm-card-background-color: #1a1d29;
+
+  /* links / primária - usamos seu ciano */
   --ifm-color-primary: #1abafa;
   --ifm-color-primary-dark: #17a3c7;
   --ifm-color-primary-darker: #138db5;
@@ -26,5 +30,143 @@
   --ifm-color-primary-light: #1cc9e0;
   --ifm-color-primary-lighter: #1fd7e8;
   --ifm-color-primary-lightest: #20e3f0;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* código */
+  --ifm-code-background: #1e1e2e;
+  --ifm-code-color: #f8fafc;
+
+  /* alertas tipo :::info */
+  --ifm-alert-background-color: #1e2537;
+  --ifm-alert-border-color: #38bdf8;
+  --ifm-alert-color: #e5e7eb;
+
+  /* tabela conteúdo lateral direita (TOC) / sidebar etc */
+  --ifm-toc-border-color: rgba(148,163,184,0.18);
+  --ifm-table-border-color: rgba(148,163,184,0.18);
+
+  color-scheme: dark;
+}
+
+/* garante que se Docusaurus colocar data-theme='dark', usamos os mesmos valores */
+html.theme-dark,
+html[data-theme='dark'],
+:root.theme-dark,
+:root[data-theme='dark'] {
+  --ifm-font-color-base: #f8fafc;
+  --ifm-color-content: #f8fafc;
+  --ifm-color-content-secondary: #cbd5e1;
+
+  --ifm-border-color: rgba(148,163,184,0.18);
+
+  --ifm-background-color: #0f1117;
+  --ifm-background-surface-color: #1a1d29;
+  --ifm-navbar-background-color: #0f1117;
+  --ifm-footer-background-color: #0f1117;
+  --ifm-card-background-color: #1a1d29;
+
+  --ifm-color-primary: #1abafa;
+  --ifm-color-primary-dark: #17a3c7;
+  --ifm-color-primary-darker: #138db5;
+  --ifm-color-primary-darkest: #107a99;
+  --ifm-color-primary-light: #1cc9e0;
+  --ifm-color-primary-lighter: #1fd7e8;
+  --ifm-color-primary-lightest: #20e3f0;
+
+  --ifm-code-background: #1e1e2e;
+  --ifm-code-color: #f8fafc;
+
+  --ifm-alert-background-color: #1e2537;
+  --ifm-alert-border-color: #38bdf8;
+  --ifm-alert-color: #e5e7eb;
+
+  --ifm-toc-border-color: rgba(148,163,184,0.18);
+  --ifm-table-border-color: rgba(148,163,184,0.18);
+
+  color-scheme: dark;
+}
+
+/* fundo da página + texto principal */
+body {
+  background-color: var(--ifm-background-color) !important;
+  color: var(--ifm-color-content) !important;
+}
+
+/* navbar */
+.navbar {
+  background-color: var(--ifm-navbar-background-color) !important;
+  color: var(--ifm-color-content) !important;
+  border-bottom: 1px solid var(--ifm-border-color) !important;
+}
+
+/* botão de search etc dentro da navbar deve herdar estilo dark */
+.navbar .navbar__inner,
+.navbar .navbar__items {
+  color: var(--ifm-color-content) !important;
+}
+.navbar a {
+  color: var(--ifm-color-content) !important;
+}
+.navbar a:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* sidebar da doc (menu esquerdo) */
+.theme-doc-sidebar-container {
+  background-color: var(--ifm-background-color) !important;
+  border-right: 1px solid var(--ifm-border-color) !important;
+}
+.theme-doc-sidebar-menu {
+  background-color: transparent !important;
+  color: var(--ifm-color-content) !important;
+}
+.theme-doc-sidebar-item-link,
+.menu__link {
+  color: var(--ifm-color-content) !important;
+}
+.menu__link--active,
+.menu__link:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* toc da direita (sumário da página) */
+.table-of-contents {
+  background-color: var(--ifm-background-color) !important;
+  border-left: 1px solid var(--ifm-border-color) !important;
+  color: var(--ifm-color-content) !important;
+}
+.table-of-contents a {
+  color: var(--ifm-color-content) !important;
+}
+.table-of-contents a:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+
+/* inline code `...` */
+code {
+  background-color: var(--ifm-code-background) !important;
+  color: var(--ifm-code-color) !important;
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
+}
+
+/* blocos de código grandes ``` */
+div.theme-code-block,
+div[class*="codeBlockContainer"] {
+  background-color: #1e1e2e !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+  border: 1px solid rgba(148,163,184,0.15);
+}
+
+/* footer */
+.footer {
+  background-color: var(--ifm-footer-background-color) !important;
+  color: var(--ifm-color-content) !important;
+  border-top: 1px solid var(--ifm-border-color) !important;
+}
+.footer a {
+  color: var(--ifm-color-primary) !important;
+}
+.footer a:hover {
+  color: var(--ifm-color-primary-lightest) !important;
 }

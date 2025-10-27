@@ -4,7 +4,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Base de Conhecimento',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   url: 'https://your-docusaurus-site.example.com',
   baseUrl: '/',
@@ -25,10 +25,10 @@ const config = {
       'classic',
       ({
         docs: {
-          routeBasePath: '/', 
+          routeBasePath: '/',        // docs na raiz
           sidebarPath: './sidebars.js',
         },
-        blog: false, 
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -54,28 +54,38 @@ const config = {
   ],
 
   themeConfig: ({
-      image: 'img/docusaurus-social-card.jpg',
-      navbar: {
-        title: 'Base de Conhecimento',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+    image: 'img/docusaurus-social-card.jpg',
+
+    // 🌙 força modo escuro
+    colorMode: {
+      defaultMode: 'dark',     
+      disableSwitch: true,     
+      respectPrefersColorScheme: false, 
+    },
+
+    navbar: {
+      title: 'Base de Conhecimento',
+      logo: {
+        alt: 'My Site Logo',
+        src: 'img/favicon.png',
+      },
+      items: [
+        {
+          type: 'search',
+          position: 'left',
         },
-        items: [
-          {
-            type: 'search',
-            position: 'left',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        copyright: `Todos os Direitos Reservados © ${new Date().getFullYear()} Pedro Justo.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
+      ],
+    },
+
+    footer: {
+      style: 'dark',
+      copyright: `Todos os Direitos Reservados © ${new Date().getFullYear()} Pedro Justo.`,
+    },
+
+    prism: {
+      theme: prismThemes.dracula,  
+      darkTheme: prismThemes.dracula,
+    },
   }),
 };
 
