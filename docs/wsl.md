@@ -1,7 +1,8 @@
 ---
+id: wsl
+title: Instalação do Ubuntu (WSL)
 sidebar_position: 1
 ---
-
 # Instalação do Ubuntu (WSL)
 
 :::info
